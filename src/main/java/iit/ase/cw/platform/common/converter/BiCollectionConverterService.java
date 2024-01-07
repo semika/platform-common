@@ -1,4 +1,5 @@
 package iit.ase.cw.platform.common.converter;
 
-public interface BiCollectionConverterService <F, T> extends FromCollectionConverter<F, T>, ToCollectionConverter<F,T> {
+public interface BiCollectionConverterService <FROM, TO>
+        extends FromCollectionConverter<FROM, TO>, ToCollectionConverter<FROM,TO> {
 }

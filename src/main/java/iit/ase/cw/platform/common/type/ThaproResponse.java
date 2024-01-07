@@ -26,20 +26,20 @@ import iit.ase.cw.platform.common.type.ThaproBaseModel;
 @Data
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class ThaproResponse<R> implements ThaproBaseModel {
+public class ThaproResponse<DTO> implements ThaproBaseModel {
 
     private static final long serialVersionUID = -7331133585763668713L;
     private String message;
-    private R data;
-    private List<R> dataList = new ArrayList<>();
+    private DTO data;
+    private List<DTO> dataList = new ArrayList<>();
     private ThaproPage pagination;
 
-    public ThaproResponse(String message, R data) {
+    public ThaproResponse(String message, DTO data) {
         this.message = message;
         this.data = data;
     }
 
-    public ThaproResponse(String message, List<R> dataList) {
+    public ThaproResponse(String message, List<DTO> dataList) {
         this.message = message;
         this.dataList = dataList;
     }

@@ -14,7 +14,7 @@ package iit.ase.cw.platform.common.exception;
 
 import java.util.List;
 
-public class ThaproGenericRuntimeException extends ThaproException {
+public class ThaproGenericRuntimeException extends ThaproRuntimeException {
 
     public ThaproGenericRuntimeException(String messageKey) {
         super(messageKey);

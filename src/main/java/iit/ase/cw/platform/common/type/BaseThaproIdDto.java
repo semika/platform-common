@@ -12,18 +12,12 @@
 
 package iit.ase.cw.platform.common.type;
 
-import iit.ase.cw.platform.common.type.BaseThaproIdResource;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public interface BaseThaproIdDto<I> extends ThaproModel<I> {
 
-@Data
-@NoArgsConstructor
-public abstract class BaseThaproResource<I> implements BaseThaproIdResource<I> {
-
-    private Date createdDate;
-    private Long organizationId;
-    private String roadMark;
-    private String requestFor;
+    String getRequestFor();
 }

@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @FunctionalInterface
-public interface FromCollectionConverter<F, T> {
+public interface FromCollectionConverter<FROM, TO> {
 
-    List<F> from(List<T> toList, ThaproSearchFilter thaproSearchFilter);
+    List<FROM> from(List<TO> toList, ThaproSearchFilter thaproSearchFilter);
 
     // The following method is added to create an instance of this type.
-    static <F, T> FromCollectionConverter<F, T> of(FromConverter<F, T> fromConverter) {
-       return (toList, filter) -> toList.stream().map((T t) -> fromConverter.from(t, filter)).collect(Collectors.toList());
+    static <FROM, TO> FromCollectionConverter<FROM, TO> of(FromConverter<FROM, TO> fromConverter) {
+       return (toList, filter) -> toList.stream().map((TO t) -> fromConverter.from(t, filter)).collect(Collectors.toList());
     }
 }

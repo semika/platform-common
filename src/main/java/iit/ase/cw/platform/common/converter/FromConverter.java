@@ -15,11 +15,11 @@ package iit.ase.cw.platform.common.converter;
 import iit.ase.cw.platform.common.context.model.ThaproSearchFilter;
 
 @FunctionalInterface
-public interface FromConverter<F, T> {
+public interface FromConverter<FROM, TO> {
 
-    F from(T to, ThaproSearchFilter searchFilter);
+    FROM from(TO to, ThaproSearchFilter searchFilter);
 
-    static <F> ToConverter<F, F> fromConverter() {
+    static <FROM> ToConverter<FROM, FROM> fromConverter() {
 
         return (to, searchFilter) -> to;
     }

@@ -18,15 +18,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @FunctionalInterface
-public interface ToCollectionConverter<F, T> {
+public interface ToCollectionConverter<FROM, TO> {
 
-    List<T> to(List<F> dto, ThaproSearchFilter filter);
+    List<TO> to(List<FROM> dto, ThaproSearchFilter filter);
 
-    static <T> ToCollectionConverter<T, T> of() {
+    static <TO> ToCollectionConverter<TO, TO> of() {
         return (parameterList, filter) -> parameterList;
     }
 
-    static <F, T> ToCollectionConverter<F, T> of(ToConverter<F, T> converter) {
+    static <FROM, TO> ToCollectionConverter<FROM, TO> of(ToConverter<FROM, TO> converter) {
         return (dtos, filter) -> dtos.stream().map(dto -> converter.to(dto, filter)).collect(Collectors.toList());
     }
 }

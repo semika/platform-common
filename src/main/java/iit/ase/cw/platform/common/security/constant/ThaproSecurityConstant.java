@@ -20,4 +20,9 @@ public final class ThaproSecurityConstant {
         public static final String COOKIE_HEADER = "Cookie";
         public static final String SSO_ID_HEADER = "KLS-SSO-Id";
     }
+
+    public static final class MessageKey {
+
+        public static final String UN_AUTHORIZED_USER = "UN_AUTHORIZED_USER";
+    }
 }
