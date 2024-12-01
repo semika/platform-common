@@ -21,30 +21,30 @@ import iit.ase.cw.platform.common.type.ThaproResponse;
 import java.util.List;
 import java.util.Map;
 
-public interface BaseThaproService<R extends ThaproModel, I> {
+public interface BaseThaproAbstractService<DTO extends ThaproModel, I> {
 
-    default ThaproResponse<R> findAll(ThaproSearchFilter filter) {
+    default ThaproResponse<DTO> findAll(ThaproSearchFilter filter) {
         throw ThaproNotSupportedException.of(String.format("findAll:%s", filter.getModule()));
     }
 
-    default ThaproResponse<R> findById(I id, ThaproSearchFilter filter) {
+    default ThaproResponse<DTO> findById(I id, ThaproSearchFilter filter) {
         throw ThaproNotSupportedException.of(String.format("findById:%s", filter.getModule()));
     }
 
-    default ThaproResponse<R> findByRequestFor(String requestFor, R resource, ThaproSearchFilter searchFilter) {
+    default ThaproResponse<DTO> findByRequestFor(String requestFor, DTO dto, ThaproSearchFilter searchFilter) {
         throw ThaproNotSupportedException.of(String.format("findByRequestFor:%s", searchFilter.getModule()));
     }
 
-    default ThaproResponse<R> findByResourceRequestFor(String requestFor, R resource,
+    default ThaproResponse<DTO> findByResourceRequestFor(String requestFor, DTO dto,
                                                         ThaproSearchFilter searchFilter) {
         throw ThaproNotSupportedException.of(String.format("findByResourceRequestFor:%s", searchFilter.getModule()));
     }
 
-    default ThaproResponse<R> advanceSearch(String searchParameters, ThaproSearchFilter searchFilter) {
+    default ThaproResponse<DTO> advanceSearch(String searchParameters, ThaproSearchFilter searchFilter) {
         throw ThaproNotSupportedException.of(String.format("advanceSearch:%s", searchFilter.getModule()));
     }
 
-    default ThaproResponse<R> resolveDefaultLookups(String requestFor, List<String> requestAttrs, String searchParam,
+    default ThaproResponse<DTO> resolveDefaultLookups(String requestFor, List<String> requestAttrs, String searchParam,
                                                      ThaproSearchFilter searchFilter) {
         throw ThaproNotSupportedException.of(String.format("resolveLookups:%s", searchFilter.getModule()));
     }
@@ -66,15 +66,15 @@ public interface BaseThaproService<R extends ThaproModel, I> {
 //        throw ThaproNotSupportedException.of(String.format("resolveLookupGroups:%s", searchFilter.getModule()));
 //    }
 
-    default ThaproResponse<R> customAdvanceSearch(String searchParameters, ThaproSearchFilter searchFilter) {
+    default ThaproResponse<DTO> customAdvanceSearch(String searchParameters, ThaproSearchFilter searchFilter) {
         throw ThaproNotSupportedException.of(String.format("customAdvanceSearch:%s", searchFilter.getModule()));
     }
 
-    default ThaproResponse<R> save(R resource, ThaproSearchFilter searchFilter) throws ThaproValidationException {
+    default ThaproResponse<DTO> save(DTO dto, ThaproSearchFilter searchFilter) throws ThaproValidationException {
         throw ThaproNotSupportedException.of(String.format("save:%s", searchFilter.getModule()));
     }
 
-    default ThaproResponse<R> update(R resource, ThaproSearchFilter filter) throws ThaproNoDataFoundException,
+    default ThaproResponse<DTO> update(DTO dto, ThaproSearchFilter filter) throws ThaproNoDataFoundException,
         ThaproValidationException {
         throw ThaproNotSupportedException.of(String.format("update:%s", filter.getModule()));
 
@@ -90,11 +90,11 @@ public interface BaseThaproService<R extends ThaproModel, I> {
 
     }
 
-    default ThaproResponse<R> delete(R resource, ThaproSearchFilter filter) throws ThaproNoDataFoundException {
+    default ThaproResponse<DTO> delete(DTO dto, ThaproSearchFilter filter) throws ThaproNoDataFoundException {
         throw ThaproNotSupportedException.of(String.format("delete:%s", filter.getModule()));
     }
 
-    default ThaproResponse<R> deleteByID(I id, ThaproSearchFilter filter) throws ThaproNoDataFoundException {
+    default ThaproResponse<DTO> deleteByID(I id, ThaproSearchFilter filter) throws ThaproNoDataFoundException {
         throw ThaproNotSupportedException.of(String.format("deleteByID:%s", filter.getModule()));
     }
 }

@@ -4,7 +4,7 @@ import iit.ase.cw.platform.common.exception.ThaproNoDataFoundException;
 import iit.ase.cw.platform.common.exception.ThaproValidationException;
 import iit.ase.cw.platform.common.context.model.SearchFilter;
 import iit.ase.cw.platform.common.context.model.ThaproSearchFilter;
-import iit.ase.cw.platform.common.service.BaseThaproService;
+import iit.ase.cw.platform.common.service.BaseThaproAbstractService;
 import iit.ase.cw.platform.common.type.BaseThaproIdDto;
 import iit.ase.cw.platform.common.type.ThaproResponse;
 
@@ -22,9 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class BaseThaproController<DTO extends BaseThaproIdDto<ID>, ID> {
 
-    private BaseThaproService<DTO, ID> baseThaproService;
+    private BaseThaproAbstractService<DTO, ID> baseThaproService;
 
-    public BaseThaproController(BaseThaproService baseThaproService) {
+    public BaseThaproController(BaseThaproAbstractService baseThaproService) {
         this.baseThaproService = baseThaproService;
     }
 
